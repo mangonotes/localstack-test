@@ -81,4 +81,4 @@ jobs:
 
       - name: Verify successful deployment
         run: |
-         aws s3 ls
+         awslocal  s3 ls
