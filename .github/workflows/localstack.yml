@@ -32,9 +32,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-        with:
-          path: repo
-
+       
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
@@ -46,14 +44,14 @@ jobs:
           python-version: '3.10'
 
       - name: Install dependencies for aws-cdk-local
-        working-directory: repo
+       
         run: |
           npm install
           npm install -g aws-cdk aws-cdk-local
           echo "$(pwd)/bin" >> $GITHUB_PATH
 
       - name: Install specific aws-cdk version
-        working-directory: repo
+        
         if: inputs.upstream-version
         run: npm install aws-cdk@${{ inputs.upstream-version }}
 
