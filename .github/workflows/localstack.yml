@@ -21,4 +21,8 @@ jobs:
           cdk_stack: '--all'
           cdk_args: '--require-approval never' # This is a toy example, so we don't need to approve changes
           actions_comment: false
+        env:
+          AWS_ACCESS_KEY_ID: test
+          AWS_SECRET_ACCESS_KEY: test
+          AWS_DEFAULT_REGION: 'ap-northeast-1'   
      
