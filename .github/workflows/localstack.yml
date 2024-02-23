@@ -77,7 +77,7 @@ jobs:
 
       - name: Deploy
         timeout-minutes: 1
-        run: cdklocal deploy --require-approval=never
+        run: cdklocal deploy --all --require-approval=never
 
       - name: Verify successful deployment
         run: |
