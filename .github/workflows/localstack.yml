@@ -67,13 +67,7 @@ jobs:
       - name: Install localstack CLI
         run: pip install localstack
 
-      - name: Create temporary directory for test
-        run: mkdir cdk-test
-
-      - name: Initialize new CDK app
-        working-directory: cdk-test
-        run: cdklocal init app --language=${{ matrix.language }}
-
+            
       - name: Start and wait for localstack (Community)
         timeout-minutes: 10
         run: |
