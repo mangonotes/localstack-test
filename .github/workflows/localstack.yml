@@ -1,0 +1,19 @@
+name: LocalStack Test
+on: [ push, pull_request ]
+
+jobs:
+  localstack-action-test:
+    name: 'Test LocalStack GitHub Action'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Start LocalStack
+        uses: LocalStack/setup-localstack@main
+        with:
+          image-tag: 'latest'
+          install-awslocal: 'true'
+
+      - name: Run Tests against LocalStack
+        run: |
+          cdklocal bootstrap -all
