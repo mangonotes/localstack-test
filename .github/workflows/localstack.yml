@@ -51,7 +51,7 @@ jobs:
         working-directory: repo
         run: |
           npm install
-          npm install aws-cdk
+          npm install aws-cdk aws-cdk-local
           echo "$(pwd)/bin" >> $GITHUB_PATH
 
       - name: Install specific aws-cdk version
