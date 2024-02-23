@@ -76,12 +76,10 @@ jobs:
           localstack wait -t 30
 
       - name: Run bootstrap
-        working-directory: cdk-test
         timeout-minutes: 1
         run: cdklocal bootstrap
 
       - name: Deploy
-        working-directory: cdk-test
         timeout-minutes: 1
         run: cdklocal deploy --require-approval=never
 
