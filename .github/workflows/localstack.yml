@@ -82,3 +82,4 @@ jobs:
       - name: Verify successful deployment
         run: |
          awslocal  s3 ls
+         echo "Test Execution complete!"    
