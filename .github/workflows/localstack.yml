@@ -59,7 +59,9 @@ jobs:
       
       - name: Run bootstrap
         timeout-minutes: 1
-        run: cdklocal bootstrap
+        run: |
+            npm install
+            cdklocal bootstrap
 
       - name: Deploy
         timeout-minutes: 1
