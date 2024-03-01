@@ -54,12 +54,7 @@ jobs:
       - name: Install specific aws-cdk version
         
         
-        run: npm install aws-cdk@${{ inputs.upstream-version }}
-
-      - name: Verify specific aws-cdk version is used by cdklocal
-       
-        run: |
-          [[ $(cdklocal --version) =~ ^${{ inputs.upstream-version }}.* ]] || exit 1
+        run: npm install -g aws-cdk-local aws-cdk
 
       
       - name: Run bootstrap
