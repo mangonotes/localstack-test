@@ -60,6 +60,7 @@ jobs:
       - name: Run bootstrap
         timeout-minutes: 1
         run: |
+            curl -v http://localhost:4566
             npm install
             cdklocal bootstrap
 
