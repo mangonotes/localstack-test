@@ -53,11 +53,11 @@ jobs:
 
       - name: Install specific aws-cdk version
         
-        if: inputs.upstream-version
+        
         run: npm install aws-cdk@${{ inputs.upstream-version }}
 
       - name: Verify specific aws-cdk version is used by cdklocal
-        if: inputs.upstream-version
+       
         run: |
           [[ $(cdklocal --version) =~ ^${{ inputs.upstream-version }}.* ]] || exit 1
 
