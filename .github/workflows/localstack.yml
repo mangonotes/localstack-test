@@ -62,8 +62,8 @@ jobs:
         timeout-minutes: 1
         run: |
         
-            apt-get update && apt-get install -y curl &&  apt-get install -y net-tools
-            netstat -f
+            apt-get update && apt-get install -y curl 
+            ss -a
             curl -v http://localhost:4566
             npm install
             cdklocal bootstrap
