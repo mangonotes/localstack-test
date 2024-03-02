@@ -61,7 +61,6 @@ jobs:
       - name: Run bootstrap
         timeout-minutes: 1
         run: |
-            apt update && apt upgrade
             apt install curl
             curl -v http://localhost:4566
             npm install
