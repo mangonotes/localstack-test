@@ -61,7 +61,10 @@ jobs:
       - name: Run bootstrap
         timeout-minutes: 1
         run: |
+        
             apt-get update && apt-get install -y curl
+            docker ps
+            netstat -f
             curl -v http://localhost:4566
             npm install
             cdklocal bootstrap
