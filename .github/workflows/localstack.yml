@@ -19,6 +19,7 @@ env:
 jobs:
   integration-nodejs:
     runs-on: ubuntu-latest
+    container: ubuntu
     services:
       localstack:
         image: localstack/localstack:latest
