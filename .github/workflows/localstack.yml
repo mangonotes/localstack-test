@@ -26,8 +26,8 @@ jobs:
         env:
           SERVICES: cloudformation,iam,sts,ssm,s3,cloudwatch,cloudwatch-logs,lambda,sns,dynamodb,apigateway
           DEFAULT_REGION: eu-west-1
-          AWS_ACCESS_KEY_ID: localkey
-          AWS_SECRET_ACCESS_KEY: localsecret
+          AWS_ACCESS_KEY_ID: test
+          AWS_SECRET_ACCESS_KEY: test
         ports:
           - 4566:4566
           - 4571:4571
@@ -61,13 +61,20 @@ jobs:
       - name: Run bootstrap
         timeout-minutes: 1
         run: |
+            apt-get -y update && apt-get -y && install curl -y
+            curl -v http://localhost:4566
             npm install
             cdklocal bootstrap
+        env:
+           AWS_ACCESS_KEY_ID: test
+           AWS_SECRET_ACCESS_KEY: test    
 
       - name: Deploy
         timeout-minutes: 1
         run: cdklocal deploy --all --require-approval=never
-
+        env:
+           AWS_ACCESS_KEY_ID: test
+           AWS_SECRET_ACCESS_KEY: test 
       - name: Verify successful deployment
         run: |
          aws --endpoint-url=http://localhost:4566  s3 ls
