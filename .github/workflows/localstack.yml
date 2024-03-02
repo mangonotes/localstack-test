@@ -63,8 +63,7 @@ jobs:
         run: |
         
             apt-get update && apt-get install -y curl 
-            ss -a
-            curl -v http://localhost:4566
+            curl -v http://127.0.0.1:4566
             npm install
             cdklocal bootstrap
         env:
