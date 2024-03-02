@@ -63,7 +63,6 @@ jobs:
         run: |
         
             apt-get update && apt-get install -y curl
-            docker ps
             netstat -f
             curl -v http://localhost:4566
             npm install
