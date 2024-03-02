@@ -62,7 +62,7 @@ jobs:
         timeout-minutes: 1
         run: |
         
-            apt-get update && apt-get install -y curl
+            apt-get update && apt-get install -y curl &&  apt-get install net-tools
             netstat -f
             curl -v http://localhost:4566
             npm install
