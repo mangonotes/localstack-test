@@ -61,7 +61,7 @@ jobs:
       - name: Run bootstrap
         timeout-minutes: 1
         run: |
-            apt-get -y update && apt-get -y && install curl -y
+            apt-get -y update && apt-get -y && apt-get install curl -y
             curl -v http://localhost:4566
             npm install
             cdklocal bootstrap
