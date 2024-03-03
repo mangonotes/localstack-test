@@ -86,8 +86,8 @@ jobs:
       
       - name: Verify successful deployment
         run: |
-         apt-get install python3-pip
-         pip install awscli-local
+         apt-get install python3-pip -y
+         pip install awscli-local -y
          npm install -g aws-cdk
          cdk --version
          aws --endpoint-url=http://localstack:4566  s3 ls
