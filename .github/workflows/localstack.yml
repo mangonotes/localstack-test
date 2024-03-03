@@ -74,12 +74,16 @@ jobs:
            AWS_ENDPOINT_URL: http://localstack:4566
 
       - name: Deploy
-        timeout-minutes: 1
+        timeout-minutes: 1 
         run: cdklocal deploy --all --require-approval=never
         env:
            AWS_ACCESS_KEY_ID: test
            AWS_SECRET_ACCESS_KEY: test 
            AWS_ENDPOINT_URL: http://localstack:4566
+      - uses: actions/setup-python@v5
+        with:
+           python-version: '3.10'
+      - run: pip install -r requirements.txt
       - name: Verify successful deployment
         run: |
          pip install awscli-local
