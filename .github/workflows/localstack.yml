@@ -92,4 +92,8 @@ jobs:
          npm install -g aws-cdk
          cdk --version
          awslocal   s3 ls
-         echo "Test Execution complete!"    
+         echo "Test Execution complete!"
+        env:
+           AWS_ACCESS_KEY_ID: test
+           AWS_SECRET_ACCESS_KEY: test 
+           AWS_ENDPOINT_URL: http://localstack:4566
