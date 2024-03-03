@@ -91,7 +91,7 @@ jobs:
          pip install awscli-local 
          npm install -g aws-cdk
          cdk --version
-         awslocal   s3 ls
+         aws  s3 ls
          echo "Test Execution complete!"
         env:
            AWS_ACCESS_KEY_ID: test
