@@ -82,6 +82,7 @@ jobs:
            AWS_ENDPOINT_URL: http://localstack:4566
       - name: Verify successful deployment
         run: |
+         pip install awscli-local
          npm install -g aws-cdk
          cdk --version
          aws --endpoint-url=http://localstack:4566  s3 ls
