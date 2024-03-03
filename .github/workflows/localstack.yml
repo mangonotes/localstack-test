@@ -68,7 +68,8 @@ jobs:
             cdklocal bootstrap
         env:
            AWS_ACCESS_KEY_ID: test
-           AWS_SECRET_ACCESS_KEY: test    
+           AWS_SECRET_ACCESS_KEY: test
+           AWS_ENDPOINT_URL: http://localstack:4566
 
       - name: Deploy
         timeout-minutes: 1
