@@ -87,6 +87,7 @@ jobs:
       - name: Verify successful deployment
         run: |
          apt-get install -y python3-pip 
+         pip3 install awscli --upgrade --user
          pip install awscli-local 
          npm install -g aws-cdk
          cdk --version
