@@ -51,8 +51,6 @@ jobs:
         run: |
         
             apt-get update && apt-get install -y curl 
-            apt install python3-pip
-            `pip install localstack[0.12.19]
             curl -v http://localstack:4566
             npm install
             npm install -g aws-cdk
@@ -76,6 +74,8 @@ jobs:
       
       - name: Verify successful deployment
         run: |
+         apt install python3-pip
+         pip install localstack[0.12.19]
          apt-get install -y python3-pip 
          pip3 install awscli --upgrade --user
          pip install awscli-local 
