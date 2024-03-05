@@ -1,0 +1,89 @@
+name: Regression Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      upstream-version:
+        description: Upstream aws-cdk version to use in tests
+        required: false
+env:
+  AWS_ACCESS_KEY_ID: test
+  AWS_SECRET_ACCESS_KEY: test
+
+jobs:
+  integration-nodejs:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        include:
+          - { language: javascript, node-version: '20.x', region: eu-west-1}
+          
+
+    env:
+      AWS_REGION: ${{ matrix.region }}
+      AWS_DEFAULT_REGION: ${{ matrix.region }}
+
+    steps:
+      - uses: actions/checkout@v2
+       
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      
+
+      - name: Install specific aws-cdk version
+        
+        
+        run: npm install -g aws-cdk-local aws-cdk
+
+      
+      - name: Run bootstrap
+        timeout-minutes: 1
+        run: |
+        
+            apt-get update && apt-get install -y curl 
+            apt install python3-pip
+            `pip install localstack[0.12.19]
+            curl -v http://localstack:4566
+            npm install
+            npm install -g aws-cdk
+            cdk --version
+            cdklocal bootstrap
+        env:
+           AWS_ACCESS_KEY_ID: test
+           AWS_SECRET_ACCESS_KEY: test
+           AWS_ENDPOINT_URL: http://localstack:4566
+
+      - name: Deploy
+        timeout-minutes: 1 
+        run: cdklocal deploy --all --require-approval=never
+        env:
+           AWS_ACCESS_KEY_ID: test
+           AWS_SECRET_ACCESS_KEY: test 
+           AWS_ENDPOINT_URL: http://localstack:4566
+      - uses: actions/setup-python@v5
+        with:
+           python-version: '3.10'
+      
+      - name: Verify successful deployment
+        run: |
+         apt-get install -y python3-pip 
+         pip3 install awscli --upgrade --user
+         pip install awscli-local 
+         npm install -g aws-cdk
+         cdk --version
+         awslocal  s3 ls
+         echo "Test Execution complete!"
+        env:
+           AWS_ACCESS_KEY_ID: test
+           AWS_SECRET_ACCESS_KEY: test 
+           AWS_ENDPOINT_URL: http://localstack:4566
