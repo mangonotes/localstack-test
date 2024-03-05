@@ -67,7 +67,7 @@ jobs:
       
       - name: Verify successful deployment
         run: |
-         apt install python3-pip
+         apt install -y python3-pip
          pip install localstack[0.12.19]
          apt-get install -y python3-pip 
          pip3 install awscli --upgrade --user
