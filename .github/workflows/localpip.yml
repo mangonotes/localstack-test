@@ -19,7 +19,8 @@ env:
 jobs:
   integration-nodejs:
     runs-on: ubuntu-latest
-    
+    container: ubuntu
+   
     strategy:
       matrix:
         include:
