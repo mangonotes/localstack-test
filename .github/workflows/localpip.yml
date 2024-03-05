@@ -73,7 +73,7 @@ jobs:
          pip install awscli-local 
          npm install -g aws-cdk
          cdk --version
-          pip install localstack==0.12.19
+         python3 -m pip install localstack
          localstack   start  --host 
         
          echo "Test Execution complete!"
