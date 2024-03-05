@@ -68,12 +68,12 @@ jobs:
       - name: Verify successful deployment
         run: |
          apt install -y python3-pip
-         pip install localstack[0.12.19]
-         apt-get install -y python3-pip 
+        
          pip3 install awscli --upgrade --user
          pip install awscli-local 
          npm install -g aws-cdk
          cdk --version
+          pip install localstack==0.12.19
          localstack   start  --host 
         
          echo "Test Execution complete!"
