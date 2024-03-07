@@ -19,7 +19,6 @@ env:
 jobs:
   integration-nodejs:
     runs-on: ubuntu-latest
-    container: ubuntu
     services:
       localstack:
         image: localstack/localstack:latest
@@ -62,8 +61,7 @@ jobs:
         timeout-minutes: 1
         run: |
         
-            apt-get update && apt-get install -y curl 
-            curl -v http://localstack:4566
+            
             npm install
             npm install -g aws-cdk
             cdk --version
@@ -96,4 +94,4 @@ jobs:
         env:
            AWS_ACCESS_KEY_ID: test
            AWS_SECRET_ACCESS_KEY: test 
-           AWS_ENDPOINT_URL: http://localstack:4566
+           AWS_ENDPOINT_URL: http://localhost:4566
